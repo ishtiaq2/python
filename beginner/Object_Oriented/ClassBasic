@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import argparse
+import sys
+
+name = 'Muqadas'
+age = '2 years'
+
+
+class ClassBasic:
+
+    def __init__(self, name, age):
+        """
+
+        :type name: object
+        """
+        self.name = name
+        self.age = age
+
+    def show_data(self):
+        print('Name: {}, Age: {}'.format(self.name, self.age))
+
+
+if __name__ == "__main__":
+    basic = ClassBasic('ishtiaq', '35')
+    basic.show_data()
+    print('None class scoped Name: {}'.format(name))
+    print('Class scoped Name: {}'.format(basic.name))
+
+
