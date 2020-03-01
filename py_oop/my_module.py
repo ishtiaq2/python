@@ -194,3 +194,18 @@ mgr_1.print_emps()
 print'\n"\033[1;32;40m########################################################################'
 print '####### Inheritance ##############'
 print'########################################################################"\033[1;37;40m'
+
+
+print'\n\n\n\033[1;32;40m########################################################################'
+print '#################### \033[1;37;40m comparing subclass Inheritance \033[1;32;40m##############'
+print'########################################################################"\033[1;37;40m'
+
+print 'isinstance(mgr_1, Employee): ', isinstance(mgr_1, Employee)
+print 'isinstance(mgr_1, Developer): ', isinstance(mgr_1, Developer)
+
+print 'issubclass(Manager, Employee): ', issubclass(Manager, Employee)
+print 'issubclass(Manager, Developer): ', issubclass(Manager, Developer)
+
+print'\033[1;32;40m########################################################################'
+print '#################### \033[1;37;40m comparing subclass Inheritances ends \033[1;32;40m##############'
+print'########################################################################"\033[1;37;40m'
