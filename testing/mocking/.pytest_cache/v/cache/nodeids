@@ -1,0 +1,5 @@
+[
+  "test_my_module.py::test_add", 
+  "test_my_module.py::test_sub", 
+  "test_my_module.py::test_get_total"
+]
