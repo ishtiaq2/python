@@ -19,3 +19,18 @@ class MyCalc:
         return self.response
     
     
+    def foo(self, y):
+        x = self.db_write(y)
+        return x
+
+    def db_write(self, x):
+        return 10
+
+
+    def foo_str(self, x):
+        return x
+    
+class Student:
+
+    def callable(self, x):
+        return 'temp'

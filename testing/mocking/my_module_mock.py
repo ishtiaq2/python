@@ -11,5 +11,6 @@ def mock_mycalc_sub(*args):
     return args[2]
 
 
-def mock_get_total():
-    return 10
+def mock_get_total(y):
+    return y + y
+
