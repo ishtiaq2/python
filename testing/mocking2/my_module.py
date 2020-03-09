@@ -6,9 +6,10 @@ from my_module2 import database
 class Employee:
     db = database()
 
-    def __init__(self, name, lang):
-        self.name = name
+    def __init__(self, lang, name='abbas'):
         self.lang = lang
+        self.name = name
+    
 
     def salary(self):
         salary = self.db.get_salary(self.name)
@@ -17,7 +18,7 @@ class Employee:
         else:
             return ' not found'
 
-
+'''
 def main():
     parser = argparse.ArgumentParser('Get employee data')
     parser.add_argument('-n', '--name', help='Enter emp name', required=True)
@@ -30,3 +31,19 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
+
+'''
+
+class Employee2:
+
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
+
+    def get_emp(self):
+        emp = db_get_emp()
+        
+    def db_get_emp(self):
+        return 'ishtiaq'
+
+
