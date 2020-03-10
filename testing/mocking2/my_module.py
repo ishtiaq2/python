@@ -1,22 +1,26 @@
 import argparse
 import sys
 
-from my_module2 import database
+from my_module2 import Database
+
+db = Database()
+
 
 class Employee:
-    db = database()
 
     def __init__(self, lang, name='abbas'):
         self.lang = lang
         self.name = name
-    
 
     def salary(self):
-        salary = self.db.get_salary(self.name)
+        salary = db.get_salary(self.name)
         if salary > 0:
             return ', salary is: {}'.format(salary)
         else:
             return ' not found'
+
+    def get_name(self):
+        return self.name
 
 '''
 def main():
@@ -34,16 +38,23 @@ if __name__ == '__main__':
 
 '''
 
+
 class Employee2:
+    emp1 = Employee('Rayan', 'Soft Eng')
 
     def __init__(self, name, role):
         self.name = name
         self.role = role
 
     def get_emp(self):
-        emp = db_get_emp()
-        
+        emp = self.db_get_emp()
+        print 'emp ############################: name: {}, id: {}'.format(emp.name, emp.id)
+        print emp.name
+        return emp
+
     def db_get_emp(self):
         return 'ishtiaq'
 
-
+    def get_emp1_sal(self):
+        sal = self.emp1.salary()
+        return sal
