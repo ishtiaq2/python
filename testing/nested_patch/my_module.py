@@ -35,3 +35,7 @@ def open_function():
     db = Database()
     data = db.get_data('Toyota')
     return data
+
+
+def simple_function():
+    return open_function()

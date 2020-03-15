@@ -18,9 +18,19 @@ def test_get_car_data(self, ):
 with mock.patch.object(Database, 'get_data', return_value={'Car': 'Lexus'}):
     assert my_module.open_function() == {'Car': 'Lexus'}
 
+
+with mock.patch('my_module.open_function', return_value="no data") as open_func_mock:
+    assert my_module.simple_function() == "no data"
+
+
+with mock.patch('my_module.open_function', side_effect=mck.mocked_db_get_data):
+    assert my_module.simple_function() == {'Car': 'BMW'}
+    
+
 with mock.patch.object(Database, 'get_data') as mck_db_get_data:
     mck_db_get_data.return_value = {'Car': "Tesla"}
     assert my_module.open_function() == {'Car': 'Tesla'}    
+
 
 with mock.patch('my_module.open_function', side_effect=mck.mocked_db_get_data) as mck_none:
     assert my_module.open_function() == {'Car': 'BMW'}
@@ -48,3 +58,23 @@ with mock.patch('my_module.open_function', side_effect=car.get_car_data):
     with mock.patch.object(Car, 'get_car_data', side_effect=Database.get_data):
         with mock.patch.object(Database, 'get_data', return_value={'Car': "Tesla2"}) as mck_db_get_data2:
             assert my_module.open_function() == {'Car': 'Tesla2'}
+
+
+with mock.patch('my_module.open_function') as simple_mock:
+    simple_mock.return_value = {'Car', 'Simple Mock'}
+    assert my_module.open_function() == {'Car', 'Simple Mock'}
+
+    
+with mock.patch('my_module.open_function') as open_func_mock:
+    with mock.patch('my_module.simple_function') as simple_func_mock:
+        simple_func_mock.return_value = {'Car', 'Simple Mock'}
+        assert my_module.simple_function() == {'Car', 'Simple Mock'}
+
+
+with mock.patch('my_module.simple_function') as simple_func_mock:
+    with mock.patch('my_module.open_function') as open_func_mock:
+        simple_func_mock.return_value = {'Car', 'Simple Mock'}
+        assert my_module.simple_function() == {'Car', 'Simple Mock'}
+
+
+
