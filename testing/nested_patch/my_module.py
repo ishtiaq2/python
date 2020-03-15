@@ -13,7 +13,7 @@ class Database:
         'Price': 5000000
     }
 
-    def get_data(self, company):
+    def get_data(self, company='Toyota'):
         return self.data[company]
 
 
@@ -30,7 +30,6 @@ class Car:
         return data
 
 
-db = Database()
 
 def open_function():
     db = Database()
