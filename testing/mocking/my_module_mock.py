@@ -14,3 +14,6 @@ def mock_mycalc_sub(*args):
 def mock_get_total(y):
     return y + y
 
+
+def mock_get_name():
+    return 'Abbas'

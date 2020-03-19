@@ -32,3 +32,11 @@ def test_foo(self, ):
 def test_get_total():
     x = calc.total
     assert x == 20
+
+@mock.patch('my_module.MyCalc.name', new='Rayan')
+def test_get_name():
+    n = calc.name
+    assert n == 'Rayan'
+
+def test_get_name():
+    assert calc.name == 'ishtiaq'

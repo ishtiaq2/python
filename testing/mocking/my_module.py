@@ -1,6 +1,7 @@
 class MyCalc:
 
     total = 4
+    name = 'ishtiaq'
 
     def add(self, a, b):
         self.a = a
@@ -29,8 +30,24 @@ class MyCalc:
 
     def foo_str(self, x):
         return x
+
+    def get_name():
+        return name
+
     
 class Student:
 
     def callable(self, x):
         return 'temp'
+
+
+
+def exception_handling(a, b):
+    try:
+        return a/b
+    except Exception as e:
+        raise ZeroDivisionError('Division by zero')
+
+
+def raise_value_error():
+    raise ValueError('Some error text')
