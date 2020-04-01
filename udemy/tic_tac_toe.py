@@ -2,6 +2,7 @@ import sys
 
 player1 = ''
 player2 = ''
+
 counter = 0
 
 rows, cols = (3, 3)
@@ -53,33 +54,146 @@ def start_play():
             switch_player = True
 
         counter = counter + 1    
-        calculate_score(array)
+        p1_score, p2_score = calculate_score(array)
 
+        print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
+
+        if p1_score == 3 or p2_score == 3:
+            print ' Final Score: Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)
+            break
+    print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
     print 'game finished'
 
 
 def calculate_score(array):
+    p1_score, p2_score = calc_hor(array)
+    if p1_score == 3 or p2_score:
+        return p1_score, p2_score
+    p1_score, p2_score = calc_vert(array)
+    if p1_score == 3 or p2_score:
+        return p1_score, p2_score
+    p1_score, p2_score = calc_cross_left(array)
+    if p1_score == 3 or p2_score:
+        return p1_score, p2_score    
+    p1_score, p2_score = calc_cross_right(array)
+    if p1_score == 3 or p2_score:
+        return p1_score, p2_score    
+
+    return p1_score, p2_score
+            
+def calc_hor(array):
     p1_count = 0
     p2_count = 0
 
     for i in range(len(array)):
+        l, m, n, o, p, q = 0, 0, 0, 0, 0, 0
         for j in range(len(array)):
             if array[i][j] == 'x':
-                p1_count = p1_count + 1
+                if l == 0:
+                    l = 1
+                elif m == 0:
+                    m = 1
+                elif n == 0:
+                    n = 1
+                    p1_count = 3
+                    break
             elif array[i][j] == 'o':
-                p2_count = p2_count + 1
+                if o == 0:
+                    o = 1
+                elif p == 0:
+                    p = 1
+                elif q == 0:
+                    q = 1
+                    p2_count = 3
+                    break
+    print l, m, n, o, p, q
+    return p1_count, p2_count
+
+def calc_vert(array):
+    p1_count = 0
+    p2_count = 0
 
     for i in range(len(array)):
+        l, m, n, o, p, q = 0, 0, 0, 0, 0, 0
         for j in range(len(array)):
             if array[j][i] == 'x':
-                p1_count = p1_count + 1
+                if l == 0:
+                    l = 1
+                elif m == 0:
+                    m = 1
+                elif n == 0:
+                    n = 1
+                    p1_count = 3
+                    break
             elif array[j][i] == 'o':
-                p2_count = p2_count + 1
+                if o == 0:
+                    o = 1
+                elif p == 0:
+                    p = 1
+                elif q == 0:
+                    q = 1
+                    p2_count = 3
+                    break
+    print l, m, n, o, p, q
+    return p1_count, p2_count
     
 
-    print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_count, p2_count)
-            
+def calc_cross_left(array):
+    p1_count = 0
+    p2_count = 0
 
+    
+    l, m, n, o, p, q = 0, 0, 0, 0, 0, 0
+    for j in range(len(array)):
+        if array[j][j] == 'x':
+            if l == 0:
+                l = 1
+            elif m == 0:
+                m = 1
+            elif n == 0:
+                n = 1
+                p1_count = 3
+                break
+        elif array[j][j] == 'o':
+            if o == 0:
+                o = 1
+            elif p == 0:
+                p = 1
+            elif q == 0:
+                q = 1
+                p2_count = 3
+                break
+    print l, m, n, o, p, q
+    return p1_count, p2_count
+
+def calc_cross_right(array):
+    p1_count = 0
+    p2_count = 0
+
+    
+    l, m, n, o, p, q = 0, 0, 0, 0, 0, 0
+    for j in range(len(array)):
+        if array[j][len(array) - 1 - j] == 'x':
+            if l == 0:
+                l = 1
+            elif m == 0:
+                m = 1
+            elif n == 0:
+                n = 1
+                p1_count = 3
+                break
+        if array[j][len(array) - 1 - j] == 'o':
+            if o == 0:
+                o = 1
+            elif p == 0:
+                p = 1
+            elif q == 0:
+                q = 1
+                p2_count = 3
+                break
+    print l, m, n, o, p, q
+    return p1_count, p2_count
+    
 
 def process_move(pos, switch_player):
     global array
