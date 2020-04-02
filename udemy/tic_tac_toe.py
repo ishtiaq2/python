@@ -45,26 +45,34 @@ def start_play():
         if switch_player:
             x = int(raw_input('Player 1 move: '))
             array = process_move(x, switch_player)
+            rearr_array = rearrange_array(array)
+            calculate_score(rearr_array)
             draw_board(array)
             switch_player = False
         else:
             o = int(raw_input('Player 2 move: '))
             array = process_move(o, switch_player)
+            rearr_array = rearrange_array(array)
+            calculate_score(rearr_array)
             draw_board(array)
             switch_player = True
 
         counter = counter + 1    
-        p1_score, p2_score = calculate_score(array)
+        #p1_score, p2_score = calculate_score(array)
 
-        print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
+        #print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
 
-        if p1_score == 3 or p2_score == 3:
-            print ' Final Score: Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)
-            break
-    print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
-    print 'game finished'
+        #if p1_score == 3 or p2_score == 3:
+         #   print ' Final Score: Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)
+          #  break
+    #print 'Player 1 Score: {}, Player 2 Score: {}'.format(p1_score, p2_score)    
+    #print 'game finished'
 
+def calculate_score(rearrange_array):
+    #recursion till len of rearrange_array
+    print rearrange_array
 
+'''
 def calculate_score(array):
     p1_score, p2_score = calc_hor(array)
     if p1_score == 3 or p2_score:
@@ -193,7 +201,7 @@ def calc_cross_right(array):
                 break
     print l, m, n, o, p, q
     return p1_count, p2_count
-    
+'''    
 
 def process_move(pos, switch_player):
     global array
@@ -247,8 +255,26 @@ def process_move(pos, switch_player):
     
     return array
 
-
-
+def rearrange_array(array):
+    rearranged_array = []
+    temp_array1 = []
+    for i in range (len(array)):
+        for j in range(len(array)):
+            temp_array = []
+            for k in range(len(array)):
+                if i == 0:
+                    temp_array.append(array[j][k])
+                elif i == 1:
+                    temp_array.append(array[k][j])
+                elif i == 2:
+                    if k == j:
+                        temp_array1.append(array[k][j])
+            if i < 2:
+                rearranged_array.append(temp_array)
+            
+    rearranged_array.append(temp_array1)
+    rearranged_array.append([array[0][2], array[1][1], array[2][0]])
+    return rearranged_array
 
 
 def main():
