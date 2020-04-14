@@ -28,7 +28,7 @@ def draw_board(array):
 def assign_symbols():
     global player1, player2
     player1 = raw_input('Player 1: Do you wan to be X or O? ')
-    player2 = 'x' if player1 == 'o' else 'o'
+    player2 = player1 if player1 == 'o' else 'o'
     print ('Player 1 is: {} and Player 2 is: {}').format(player1, player2)
     print ('Player 1 will go first.')
     st = raw_input("Are you ready to play? Enter y or n.")
@@ -80,7 +80,7 @@ def calculate_score(rearrange_array):
         player_1_score = 0
         player_2_score = 0
         for j in range(len(rearrange_array[i])):
-            if rearrange_array[i][j] == 'x':
+            if rearrange_array[i][j] == player1:
                 player_1_score += 1
     
             elif rearrange_array[i][j] == 'o':
