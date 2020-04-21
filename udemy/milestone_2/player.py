@@ -26,17 +26,22 @@ class Player():
                 self.score.append(card.value)
         
             
+    def get_final_score(self):
+        score = 0
+        for s in self.score:
+            score = score + s
+        
+        return score
+
 
     def get_score(self):
         return self.score
 
     def add_bet(self, amount):
         self.bet = self.bet + amount
-        self.continue_play()
     
     def sub_bet(self, amount):
         self.bet = self.bet - amount
-        self.continue_play()
 
     def get_signal(self):
         signal = ''
@@ -47,7 +52,7 @@ class Player():
         return signal
 
     def continue_play(self):
-        continue_play = input('{}: Enter y to continue: '.format(self.name))
+        continue_play = raw_input('{}: Enter y to continue: '.format(self.name))
         if continue_play == 'y'.toUpper():
             self.bet = self.bet + random.randint(1, 5) * 100
         else:
